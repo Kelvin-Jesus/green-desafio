@@ -1,21 +1,22 @@
 <template>
   <ul class="users-list">
-    <li class="users-list__item">
+    <li 
+      v-for="user in users.data"
+      :key="user.id"
+      class="users-list__item"
+    >
       <img
         class="user-item__img"
-        src=""
-        alt=""
-        style="background: black"
-        width="100"
-        height="100"
+        :src="user.avatar"
+        :alt="user.first_name + ' ' + user.last_name + ' Avatar'"
       >
 
       <div class="user-item__content">
         <p class="user-content__id">
-          #1
+          #{{ user.id }}
         </p>
         <p class="user-content__name">
-          George Bluth
+          {{ user.first_name + user.last_name }}
         </p>
         <p class="user-content__email">
           george.bluth@reqres.in
@@ -25,15 +26,33 @@
       <div class="user-item__actions">
         <i class="fa-solid fa-pencil" />
         <i class="fa-solid fa-trash" />
-        <i class="fa-solid fa-eye" />
+        <router-link
+          :to="{name: 'listar-usuario', params: {id: user.id}}"
+          :user="user.id"
+        >
+          <i class="fa-solid fa-eye" />
+        </router-link>
       </div>
     </li>
   </ul>
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
-    name: 'UsersList'
+    name: 'UsersList',
+    data() {
+        return {
+            users: {}
+        };
+    },
+    beforeCreate() {
+        axios.get('https://reqres.in/api/users')
+            .then(response => this.users = response.data)
+        // console.log
+    }
 }
 </script>
 
@@ -56,7 +75,7 @@ export default {
     border-radius: var(--radius);
     position: relative;
     padding: 1.25rem 1.875rem;
-    max-height: 7.5rem;
+    transition: all ease .3s;
 }
 
 .users-list__item::before {
@@ -67,6 +86,10 @@ export default {
     background: var(--bg-dark);
     height: 20px;
     width: 4px;
+}
+
+.users-list__item:hover, .users-list__item:focus {
+    transform: scale(1.05);
 }
 
 .user-item__img {
@@ -110,5 +133,24 @@ i:hover, i:focus {
     opacity: .6;
 }
 
+@media only screen and (max-width: 501px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .users-list__item {
+        grid-template-columns: .6fr 1fr;
+        gap: 1rem;
+    }
+
+    .user-item__content {
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .users-list__item {
+        padding: 1rem 1rem;
+    }
+}
 
 </style>

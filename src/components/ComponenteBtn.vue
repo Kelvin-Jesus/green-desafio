@@ -1,9 +1,21 @@
 <template>
-  <button>Novo Usuário</button>
+  <router-link
+    :to="{name: link.name}"
+    :class="className"
+    tag="button"
+  >
+    {{ textoBtn }}
+  </router-link>
 </template>
+
 <script>
 export default {
-    name: 'CadastrarBtn'
+    name: 'ComponenteBtn',
+    props: ['textoBtn', 'link', 'className'],
+    created() {
+        console.debug(this.textoBtn)
+    }
+    
 }
 </script>
 
@@ -11,7 +23,6 @@ export default {
 
 button {
     background: #000;
-    font-weight: 600;
     font-size: 1rem;
     color: #fff;
     border: none;
@@ -34,6 +45,13 @@ button:active {
 button:disabled {
   opacity: 0.5;
   cursor: wait;
+}
+
+@media only screen and (max-width: 335px) {
+    button {
+        padding: .8rem 1.25rem;
+        font-size: .8rem;
+    }
 }
 
 </style>

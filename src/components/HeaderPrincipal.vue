@@ -1,19 +1,23 @@
 <template>
   <header>
     <h1>Usuários</h1>
-    <CadastrarBtn />
+    <ComponenteBtn
+      :link="{ name: 'home' }"
+      :class-name="dark"
+      :texto-btn="'Novo usuário'"
+    />
   </header>
 </template>
 
 <script>
-import CadastrarBtn from './CadastrarBtn.vue'
+import ComponenteBtn from './ComponenteBtn.vue'
 
-    export default {
-        name: 'HeaderPrincipal',
-        components: {
-            CadastrarBtn
-        }
-    };
+export default {
+    name: 'HeaderPrincipal',
+    components: {
+        ComponenteBtn
+    }
+};
 
 </script>
 

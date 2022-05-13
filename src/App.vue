@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <HeaderPrincipal />
-    <UsersList />
+    <router-view />
   </div>
 </template>
 
 <script>
-import HeaderPrincipal from './components/HeaderPrincipal.vue';
-import UsersList from './components/UsersList.vue';
+// import HeaderPrincipal from './components/HeaderPrincipal.vue';
+// import UsersList from './components/UsersList.vue';
 
 export default {
     components: {
-        HeaderPrincipal,
-        UsersList
+        // HeaderPrincipal,
+        // UsersList
     }
 };
 </script>
@@ -47,11 +46,23 @@ body {
 
 #app {
     max-width: 37.5rem;
+    width: min(max(300px, 100vw), 37.5rem);
     margin: 0 auto;
 }
 
 ul {
     list-style: none;
+}
+
+.grey-btn {
+    background: var(--bg-grey-1);
+    color: var(--bg-dark);
+}
+
+@media only screen and (max-width: 620px) {
+    #app {
+        width: min(max(300px, 100vw), calc(100% - 1rem));
+    }
 }
 
 </style>
