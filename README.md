@@ -1,24 +1,16 @@
 # green-desafio
 
-## Project setup
+## Instalar as dependências do projeto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compilação e atualização em tempo real(para desenvolvimento)
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compilar o App para produção
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
