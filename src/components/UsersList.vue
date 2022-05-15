@@ -51,7 +51,6 @@ export default {
     beforeCreate() {
         axios.get('https://reqres.in/api/users')
             .then(response => this.users = response.data)
-        // console.log
     }
 }
 </script>

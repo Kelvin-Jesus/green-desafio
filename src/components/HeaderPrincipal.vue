@@ -1,21 +1,48 @@
 <template>
-  <header>
-    <h1>Usuários</h1>
-    <ComponenteBtn
-      :link="{ name: 'home' }"
-      :class-name="dark"
-      :texto-btn="'Novo usuário'"
-    />
-  </header>
+  <section>
+    <header>
+      <h1>Usuários</h1>
+      <button
+        v-show="!mostrarFormulario"
+        @click="mostrarFormulario = !mostrarFormulario"
+      >
+        Novo usuário
+      </button>
+      <button
+        v-show="mostrarFormulario"
+        class="grey-btn"
+        @click="mostrarFormulario = !mostrarFormulario"
+      >
+        Cancelar
+      </button>
+    </header>
+    <section>
+      <CadastrarUsuario
+        v-show="mostrarFormulario"
+        :modal-aberto="mostrarFormulario"
+      >
+        <input
+          id=""
+          type="date"
+          name=""
+        >
+      </CadastrarUsuario>
+    </section>
+  </section>
 </template>
 
 <script>
-import ComponenteBtn from './ComponenteBtn.vue'
+import CadastrarUsuario from './usuario/CadastrarUsuario.vue'
 
 export default {
     name: 'HeaderPrincipal',
     components: {
-        ComponenteBtn
+        CadastrarUsuario
+    },
+    data() {
+        return {
+            mostrarFormulario: false
+        }
     }
 };
 

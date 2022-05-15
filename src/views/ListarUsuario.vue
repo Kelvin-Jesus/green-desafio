@@ -7,9 +7,11 @@
 
 <script>
 
+import axios from 'axios';
+
 import HeaderListarUsuario from '../components/usuario/HeaderListarUsuario.vue'
 import DadosUsuario from '../components/usuario/DadosUsuario.vue'
-import axios from 'axios'
+
 
 export default {
     name: 'ListarUsuario',
@@ -26,7 +28,6 @@ export default {
     created() {
         axios.get(`https://reqres.in/api/users/${this.id}`)
             .then(response => this.user = response.data)
-        console.debug(this.user)
     }
 }
 </script>

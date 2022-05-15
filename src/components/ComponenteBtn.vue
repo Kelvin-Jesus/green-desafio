@@ -3,6 +3,7 @@
     :to="{name: link.name}"
     :class="className"
     tag="button"
+    evento
   >
     {{ textoBtn }}
   </router-link>
@@ -11,10 +12,7 @@
 <script>
 export default {
     name: 'ComponenteBtn',
-    props: ['textoBtn', 'link', 'className'],
-    created() {
-        console.debug(this.textoBtn)
-    }
+    props: ['textoBtn', 'link', 'className', 'evento'],
     
 }
 </script>
@@ -32,14 +30,9 @@ button {
     cursor: pointer;
 }
 button:hover,
-button:focus {
-  /* background: #363636; */
-  box-shadow: 0 0 0 3px #303030, 0 0 0 4px #4d4d4d;
-  outline: none;
-}
-
+button:focus,
 button:active {
-  box-shadow: 0 0 0 3px #2c2c2c, 0 0 0 4px #4d4d4d;
+  opacity: .6;
 }
 
 button:disabled {

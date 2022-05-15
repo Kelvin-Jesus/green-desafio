@@ -63,10 +63,7 @@
 <script>
 export default {
     name: 'DadosUsario',
-    props: ['dadosUsuario'],
-    created() {
-        console.debug(this.dadosUsuario)
-    }
+    props: ['dados-usuario'],
 }
 </script>
 
