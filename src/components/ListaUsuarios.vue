@@ -19,12 +19,15 @@
           {{ user.first_name + user.last_name }}
         </p>
         <p class="user-content__email">
-          george.bluth@reqres.in
+          {{ user.email }}
         </p>
       </div>
 
       <div class="user-item__actions">
-        <i class="fa-solid fa-pencil" />
+        <i
+          class="fa-solid fa-pencil"
+          @click="atualizarUsuario(user)"
+        />
         <router-link
           :to="{name: 'deletar-usuario', params: {id: user.id}}"
         >
@@ -77,6 +80,7 @@
 <script>
 
 import axios from 'axios';
+import EventBus from './../EventBus';
 
 export default {
     name: 'ListaUsuarios',
@@ -96,6 +100,9 @@ export default {
         mostrarModal() {
             this.mesangemDeletar = ''
             this.modalAberto = true;
+        },
+        atualizarUsuario(usuario) {
+            EventBus.$emit('click', usuario)
         },
         deletarUsuario() {
             axios
