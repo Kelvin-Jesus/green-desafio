@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <HeaderPrincipal />
-    <UsersList />
+    <ListaUsuarios />
   </div>
 </template>
 
 <script>
 import HeaderPrincipal from './HeaderPrincipal.vue';
-import UsersList from './UsersList.vue';
+import ListaUsuarios from './ListaUsuarios.vue';
 
 export default {
     name: 'HomeApp',
     components: {
         HeaderPrincipal,
-        UsersList
+        ListaUsuarios
     }
 };
 </script>

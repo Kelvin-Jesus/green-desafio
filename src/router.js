@@ -20,6 +20,11 @@ export default new Router({
             name: 'listar-usuario',
             component: ListarUsuario,
             props: true
-        }
+        },
+        {
+            path: '/usuarios/:id',
+            name: 'deletar-usuario',
+            component: HomeApp
+        },
     ]
 });
